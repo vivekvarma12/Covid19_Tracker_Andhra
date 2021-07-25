@@ -39,15 +39,15 @@ def data_set():
     print(report)
 
     #New_Confirmed
-    Label(master, text = "Confirmed Cases (Last Updated / day):", font=("Times New Roman", 13)).place(x = 80, y = 60)
+    Label(master, text = "Confirmed Cases (Last 24 hrs):", font=("Times New Roman", 13)).place(x = 80, y = 60)
     Confirmed_cases = Label(master, textvariable = var1, font=("Calibri", 13), relief = RAISED).place(x = 360, y = 60)
     var1.set(report['deltaconfirmed'])
     #New_Recovered
-    Label(master, text = "Recovered Cases (Last Updated / day):", font=("Times New Roman", 13)).place(x = 80, y = 100)
+    Label(master, text = "Recovered Cases (Last 24 hrs):", font=("Times New Roman", 13)).place(x = 80, y = 100)
     Label(master, textvariable = var2, font=("Calibri", 13), relief = RAISED).place(x = 360, y = 100)
     var2.set(report['deltarecovered'])
     #New_Deaths
-    Label(master, text = "Fatility rate (Last Updated / day):", font=("Times New Roman", 13)).place(x = 80, y = 140)
+    Label(master, text = "Fatility (Last 24 hrs):", font=("Times New Roman", 13)).place(x = 80, y = 140)
     Label(master, textvariable = var3, font=("Calibri", 13), relief = RAISED).place(x = 360, y = 140)
     var3.set(report['deltadeaths'])
     #Total_Active Cases
