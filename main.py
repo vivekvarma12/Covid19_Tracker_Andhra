@@ -3,7 +3,7 @@ import json
 import requests as r
 master = Tk()
 master.title("Covid19 Andhra Status")
-master.geometry("600x400")
+master.geometry("600x470")
 master.configure(bg="light green")
 url = 'https://api.covid19india.org/data.json'
 class Covid_Report:
@@ -33,6 +33,7 @@ def data_set():
     var5 = StringVar()
     var6 = StringVar()
     var7 = StringVar()
+    var8 = StringVar()
 
     report = refresh()
     #for debugging
@@ -50,23 +51,27 @@ def data_set():
     Label(master, text = "Fatility (Last 24 hrs):", font=("Times New Roman", 13)).place(x = 80, y = 140)
     Label(master, textvariable = var3, font=("Calibri", 13), relief = RAISED).place(x = 360, y = 140)
     var3.set(report['deltadeaths'])
+    #Total Confirmed
+    Label(master, text="Total Confirmed :", font=("Times New Roman", 13)).place(x=80, y=180)
+    Label(master, textvariable=var4, font=("Calibri", 13), relief=RAISED).place(x=360, y=180)
+    var4.set(report['confirmed'])
     #Total_Active Cases
-    Label(master, text = "Total Active Cases:", font=("Times New Roman", 13)).place(x = 80, y = 180)
-    Label(master, textvariable = var4, font=("Calibri", 13), relief = RAISED).place(x = 360, y = 180)
-    var4.set(report['active'])
-    #Total_Recovered_Cases
-    Label(master, text = "Total Recovered Cases:", font=("Times New Roman", 13)).place(x = 80, y = 220)
+    Label(master, text = "Total Active Cases:", font=("Times New Roman", 13)).place(x = 80, y = 220)
     Label(master, textvariable = var5, font=("Calibri", 13), relief = RAISED).place(x = 360, y = 220)
-    var5.set(report['recovered'])
+    var5.set(report['active'])
+    #Total_Recovered_Cases
+    Label(master, text = "Total Recovered Cases:", font=("Times New Roman", 13)).place(x = 80, y = 260)
+    Label(master, textvariable = var6, font=("Calibri", 13), relief = RAISED).place(x = 360, y = 260)
+    var6.set(report['recovered'])
     #Total_Deaths
-    Label(master, text = "Total Fatility:", font=("Times New Roman", 13)).place(x = 80, y = 260)
-    Label(master, textvariable = var6, font=("Calibri", 13), relief = RAISED).place(x=360, y = 260)
-    var6.set(report['deaths'])
+    Label(master, text = "Total Fatility:", font=("Times New Roman", 13)).place(x = 80, y = 300)
+    Label(master, textvariable = var7, font=("Calibri", 13), relief = RAISED).place(x=360, y = 300)
+    var7.set(report['deaths'])
     #Last_Updated
-    Label(master, text="Last Updated Date & Time :", font=("Times New Roman", 13)).place(x=80, y=300)
-    Label(master, textvariable=var7, font=("Calibri", 13), relief=RAISED).place(x=360, y=300)
-    var7.set(report['lastupdatedtime'])
+    Label(master, text="Last Updated Date & Time :", font=("Times New Roman", 13)).place(x=80, y=340)
+    Label(master, textvariable=var8, font=("Calibri", 13), relief=RAISED).place(x=360, y=340)
+    var8.set(report['lastupdatedtime'])
 
-btn = Button(master, text = "Click me! (for Refresh)", font=("Times New Roman", 13), command=data_set).place(x=200,y=340)
+btn = Button(master, text = "Click me! (for Refresh)", font=("Times New Roman", 13), command=data_set).place(x=200,y=400)
 data_set()
 master.mainloop()
